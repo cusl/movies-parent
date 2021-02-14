@@ -1,0 +1,17 @@
+
+- name: install opendjk
+  raw: apt-get install -y default-jre
+
+- name: install maven      
+  raw: apt-get update && apt-get install -y maven
+
+- name: install ssh
+  raw: apt-get install -y openssh-server
+
+- name: create jenkins user
+  raw: useradd -m jenkins && mkdir /home/jenkins/.ssh
+
+- name: create keys
+  raw: ssh-keygen -t rsa -P "" -f /home/jenkins/.ssh/jenkins_key -C "The access key for Jenkins slaves" && cat /home/jenkins/.ssh/jenkins_key.pub > /home/jenkins/.ssh/authorized_keys && echo /home/jenkins/.ssh/jenkins_key
+
+

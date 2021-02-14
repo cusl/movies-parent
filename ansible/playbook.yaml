@@ -1,0 +1,13 @@
+- hosts: jenkinsmasters
+  connection: docker
+  gather_facts: no
+  user: root
+  roles:
+    - jenkins_master
+
+- hosts: jenkinsagents
+  connection: docker
+  gather_facts: no
+  user: root
+  roles:
+    - jenkins_agent
